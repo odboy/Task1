@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    container_name: 'task1'
+    restart: 'always'
+    ports:
+      - "8008:80"
+    volumes:
+      - ${PHP_INI-./php.ini}:/usr/local/etc/php/conf.d/custom.ini
+      - ${CATCHME-./catchme.txt}:/tmp/catchme.txt
+      - ${DOCUMENT_ROOT-./www}:/var/www/html
+    env_file:
+      - env.txt
