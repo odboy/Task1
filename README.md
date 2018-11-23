@@ -1,5 +1,6 @@
 # Task1
 
+## 部署
 ```
 git clone --depth 1 https://github.com/odboy/Task1
 cd Task1
@@ -15,3 +16,9 @@ docker-compose up -d
 然后访问localhost:8008，调试端口为9000。
 
 
+## 提示
+
+- 该题为任意文件读取漏洞，建议关注 file_get_contents() 函数。
+- 关注两个点：
+	- 如何执行到危险函数？ 		回溯函数调用关系
+    - 如何构造可控变量？		回溯变量来源

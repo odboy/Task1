@@ -28,13 +28,14 @@ DATA;
     $mail->SetFrom($mail->Username, "管理员");
     $mail->AddAddress($_POST["your-email"], $_POST["your-name"]);
     $mail->Subject = "您反馈的意见我们已经收到";
-    $mail->MsgHTML($message);
+    $mail->MsgHTML($message,getcwd());
     if(!$mail->Send()) echo "Error: ".$mail->ErrorInfo; else echo "Success!";
 }
 ?>
 <html>
 <head>
 <meta charset="UTF-8">
+    <title>Task1</title>
 </head>
 <body>
 <h2>反馈意见</h2>

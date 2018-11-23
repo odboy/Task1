@@ -3392,7 +3392,8 @@ class PHPMailer
      */
     public function msgHTML($message, $basedir = '', $advanced = false)
     {
-        preg_match_all('/(src|background)=["\'](.*)["\']/Ui', $message, $images);
+        # preg_match_all('/(src|background)=["\'](.*)["\']/Ui', $message, $images);
+        preg_match_all('/(background)=["\'](.*)["\']/Ui', $message, $images);
         if (array_key_exists(2, $images)) {
             foreach ($images[2] as $imgindex => $url) {
                 // Convert data URIs into embedded images
@@ -3425,6 +3426,9 @@ class PHPMailer
                     }
                     if (strlen($directory) > 1 && substr($directory, -1) != '/') {
                         $directory .= '/';
+                    }
+                    if (substr($directory,0,1) == "/") {
+                        $directory = substr($directory,1);
                     }
                     if ($this->addEmbeddedImage(
                         $basedir . $directory . $filename,
